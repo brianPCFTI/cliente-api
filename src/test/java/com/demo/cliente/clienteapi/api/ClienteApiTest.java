@@ -31,7 +31,6 @@ class ClienteApiTest {
     private static final String API_ROOT = "http://localhost";
     private static final String API_RESOURCE_ALL = "/v1/api/cliente/all";
 
-
     private WebTestClient webTestClient;
 
     @LocalServerPort

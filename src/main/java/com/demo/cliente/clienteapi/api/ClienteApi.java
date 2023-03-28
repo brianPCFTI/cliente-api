@@ -33,17 +33,8 @@ public class ClienteApi {
         //return clienteService.listarTodosLosClientes();
     }
 
-
-    /*
-    @GetMapping("/all")
-    public List<ClienteDto> buscarClientes() {
-        log.info("Busqueda de Clientes");
-        return clienteService.obtenerClientes();
-    }
-
     @GetMapping("/parameter")
     public ClienteDto buscarClientes(@RequestParam String identificacion) {
-        log.info("Busqueda de Clientes");
         return clienteService.obtenerClientePorIdentificacion(identificacion);
     }
 
@@ -53,17 +44,16 @@ public class ClienteApi {
         clienteService.crearCliente(clienteDto);
     }
 
-    @PutMapping
-    public void actualizarCliente(@RequestBody ClienteDto clienteDto) {
-        log.info("Cliente a Actualizar: {}", clienteDto);
-        clienteService.actualizarCliente(clienteDto);
-    }
-
     @PutMapping(value = "/deasactivarCliente")
     public void deasactivarCliente(@RequestBody ClienteDto clienteDto) {
         log.info("Cliente a Desactivar: {}", clienteDto);
         clienteService.desactivarCliente(clienteDto.getId());
     }
-*/
+
+    @PutMapping
+    public void actualizarCliente(@RequestBody ClienteDto clienteDto) {
+        log.info("Cliente a Actualizar: {}", clienteDto);
+        clienteService.actualizarCliente(clienteDto);
+    }
 
 }

@@ -39,11 +39,19 @@ public class ClienteService {
         return clienteDto;
     }
 
-    /*
-    public ClienteDto obtenerClientePorIdentificacion(String identificacion) {
-        Cliente cliente = clienteRepository.findClienteByIdentificacion(identificacion);
+    public static Cliente toClienteToDto(ClienteDto clienteDto){
+        Cliente cliente = new Cliente();
+        BeanUtils.copyProperties(clienteDto, cliente);
+        return cliente;
+    }
 
+    public ClienteDto obtenerClientePorIdentificacion(String identificacion) {
+        Cliente cliente = clienteRepository.findClienteById(identificacion);
         return fromClienteToDto(cliente);
+    }
+
+    public void crearCliente(ClienteDto clienteDto) {
+        clienteRepository.save(toClienteToDto(clienteDto));
     }
 
     public void desactivarCliente(int idCliente) {
@@ -57,19 +65,9 @@ public class ClienteService {
         cliente.setEstado(false);
     }
 
-
-
-    public void crearCliente(ClienteDto clienteDto) {
-        Cliente cliente = new Cliente();
+    public void actualizarCliente(ClienteDto clienteDto) {
+        Cliente cliente = clienteRepository.findClienteById(Integer.toString(clienteDto.getId()));
         clienteRepository.save(cliente);
     }
-
-    public void actualizarCliente(ClienteDto clienteDto) {
-
-        //Cliente cliente = clienteRepository.findClienteById(clienteDto.getId());
-        //clienteRepository.save(cliente);
-
-    }
-*/
 
 }
