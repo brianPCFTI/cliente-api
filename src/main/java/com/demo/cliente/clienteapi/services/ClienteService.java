@@ -69,6 +69,7 @@ public class ClienteService {
     public void actualizarCliente(ClienteDto clienteDto) {
         Cliente cliente = clienteRepository.findClienteById(Integer.toString(clienteDto.getId()));
         cliente.setEstado(clienteDto.getEstado());
+        cliente.setNombre(clienteDto.getNombre());
         cliente.setApellidos(clienteDto.getApellidos());
         cliente.setCedula(clienteDto.getCedula());
         cliente.setPaisNacimiento(clienteDto.getPaisNacimiento());
