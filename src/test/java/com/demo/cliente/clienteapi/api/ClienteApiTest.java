@@ -4,6 +4,7 @@ import com.demo.cliente.clienteapi.dto.ClienteDto;
 import com.demo.cliente.clienteapi.services.ClienteService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,22 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ClienteApiTest {
 
+    //---[Solo para pruebas sin el API ]----------------
+    @Autowired
+    private ClienteService clienteService;
+
+    @PersistenceContext
+    private EntityManager entityManager;
+    //-------------------------------------------------
+
     private static final String API_ROOT = "http://localhost";
     private static final String API_RESOURCE_ALL = "/v1/api/cliente/all";
+
+
     private WebTestClient webTestClient;
 
     @LocalServerPort
@@ -48,19 +60,10 @@ class ClienteApiTest {
         assert clientes.size() > 0;
     }
 
-}
-
-    /*
-
-    @Autowired
-    private ClienteService clienteService;
-
-    @PersistenceContext
-    private EntityManager entityManager;
-
     @Test
-    void obtenerTodosLosClientes() {
-        clienteService.listarTodosLosClientes();
+    void obtenerTodosLosClientesV2() {
+       var res = clienteService.listarTodosLosClientes();
+       System.out.println("");
+       //log.info("prueba");
     }
-
-     */
+}

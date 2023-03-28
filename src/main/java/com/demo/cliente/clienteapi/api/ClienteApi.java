@@ -20,6 +20,14 @@ public class ClienteApi {
     @GetMapping("/all")
     public List<ClienteDto> obtenerTodosLosClientes(){
 
+        //List<ClienteDto> clientes = new ArrayList<>();
+        //return clientes;
+        return clienteService.listarTodosLosClientes();
+    }
+
+    @GetMapping("/all2")
+    public List<ClienteDto> obtenerTodosLosClientesV2(){
+
         List<ClienteDto> clientes = new ArrayList<>();
         return clientes;
         //return clienteService.listarTodosLosClientes();
