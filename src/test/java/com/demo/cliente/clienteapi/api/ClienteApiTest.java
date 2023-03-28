@@ -65,4 +65,14 @@ class ClienteApiTest {
        System.out.println("");
        //log.info("prueba");
     }
+
+
+    @Test
+    void deasactivarCliente() {
+        clienteService.desactivarCliente(1);
+        System.out.println("");
+        //log.info("prueba");
+    }
+
+
 }

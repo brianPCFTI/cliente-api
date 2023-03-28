@@ -63,6 +63,7 @@ public class ClienteService {
                         });
 
         cliente.setEstado(false);
+        clienteRepository.save(cliente);
     }
 
     public void actualizarCliente(ClienteDto clienteDto) {
